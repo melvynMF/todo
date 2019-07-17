@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="theme-color" content="#db5945">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>To Do List </title>
+	<link rel="manifest" href="manifest.json">
+
+	<script>
+		if('serviceWorker' in navigator) {
+			window.addEventListener('load', function(){
+				navigator.serviceWorker.register('/service-worker.js', {
+					scope: '/'
+				});
+			});
+		} else {
+			console.log('Use another cache method');
+		}
+  	</script>
+</head>
+
+<body>
+	
+	<main>
+		<my-todo></my-todo>
+	</main>
+
+	<script type="module" src="/js/app.js" async></script>
+	<script nomodule>
+		const script = document.createElement('script');
+		script.src = "./js/components/todo/todo.js";
+		document.head.appendChild(script);
+	</script>
+	<script type="module" src="/js/components/todo/todo.js" async></script>
+	<script type="module" src="/js/components/item/item.js" async></script>
+	<script type="module" src="/js/components/Input/input.js" async></script>
+
+</body>
+</html>
